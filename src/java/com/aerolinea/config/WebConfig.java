@@ -17,13 +17,13 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 @EnableWebMvc
 @ComponentScan("com.aerolinea")
 public class WebConfig extends WebMvcConfigurerAdapter {
-    
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver
                 = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/jsp/");
-        resolver.setSuffix(".jsp");
+        resolver.setPrefix("/faces/");
+        resolver.setSuffix(".xhtml");
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
     }
@@ -52,17 +52,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 // 
 //      return dataSource;
 //   }
-    
+
     @Override
     public void configureDefaultServletHandling(
             DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-    
+
     // Para definir pàgina inicio al correr proyecto
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
-    
+
 }
